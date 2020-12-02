@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "cross-env DEBUG=dev nodemon --exec babel-node src/index.js"
+    "clean": "rimraf build && mkdir build",
+    "build": "rimraf build && mkdir build && babel src --out-dir build",
+    "dev": "cross-env DEBUG=dev nodemon --exec babel-node src/index.js",
+    "start": "node ./build/index.js"
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +24,7 @@
     "@babel/core": "^7.12.9",
     "@babel/node": "^7.12.6",
     "@babel/preset-env": "^7.12.7",
-    "nodemon": "^2.0.6"
+    "nodemon": "^2.0.6",
+    "rimraf": "^3.0.2"
   }
 }
