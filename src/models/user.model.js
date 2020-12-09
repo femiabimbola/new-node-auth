@@ -22,4 +22,16 @@ const userSchema = new mongoose.Schema({
       },
 });
 
+
+userSchema.methods.comparePassword = async function (password) {
+    return await bcrypt.compare(password, this.password);
+  };
+  
+  userSchema.methods.generateVerificationToken = function () {
+    return jwt.sign({ id: this._id }, jwtPrivateSecret, {
+      expiresIn: "10d",
+      algorithm: "RS256",
+    });
+  };
+
 export default mongoose.model('User', userSchema)
