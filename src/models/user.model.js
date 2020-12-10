@@ -3,6 +3,8 @@ import { config } from "dotenv";
 
 config();
 
+const jwtPrivateSecret = process.env.JWT_PRIVATE_SECRET
+
 const userSchema = new mongoose.Schema({
     email: {
         type: String,

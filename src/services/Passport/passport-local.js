@@ -17,6 +17,7 @@ passport.use(
   new Strategy(authFields, async ( email, password, done) => {
     try {
       const user = await User.findOne({
+          // req should have been used here!
         $or: [{ email }, { userName: email }],
       });
 
