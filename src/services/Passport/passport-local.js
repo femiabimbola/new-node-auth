@@ -37,3 +37,37 @@ passport.use(
     }
   }),
 );
+
+passport.use(
+  'signup',
+  new Strategy(authFields, async (req, email, password, done) => {
+    try {
+    const checkEmail = await User.checkExistingField('email', email);
+
+      if (checkEmail) {
+        return done(null, false, {
+          statusCode: 409,
+          message: 'Email already registered, log in instead',
+        });
+      }
+
+    const checkUserName = await User.checkExistingField('userName', req.body.userName);
+      if (checkUserName) {
+        return done(null, false, {
+          statusCode: 409,
+          message: 'Username exists, please try another',
+        });
+      }
+
+      const newUser = new User();
+      newUser.email = req.body.email;
+      newUser.password = req.body.password;
+      newUser.userName = req.body.userName;
+      await newUser.save();
+      return done(null, newUser);
+    } catch (err) {
+        DEBUG(err)
+      return done(null, false, {statusCode: 400, message: err.message});
+    }
+  }),
+);
