@@ -3,7 +3,7 @@ import authController from "../controllers/auth.controller";
 import catchAsync from "../middleware/catchAsync";
 import authentication from '../middleware/authenticate';
 
-const { signup, login, protectedRoute, logout } = authController;
+const { signup, login, protectedRoute } = authController;
 const { authenticate } = authentication;
 
 const authRouter = Router();
