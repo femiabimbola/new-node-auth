@@ -5,8 +5,7 @@ import User from '../../models/user.model';
 
 config()
 
-const jwtPublicSecret = process.env.JWT_PUBLIC_SECRET.replace(/\\n/g, '\n');
-
+const jwtPublicSecret = process.env.JWT_PUBLIC_SECRET
 const cookieExtractor = req => {
   let token = null;
   if (req && req.cookies.jwt) {

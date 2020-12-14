@@ -1,9 +1,12 @@
 import express from 'express';
 import logger from 'morgan';
+import { config } from "dotenv"
 // import { NotFoundError } from './helpers/errorHandler';
 import { successRespond, errorRespond } from './helpers/responder';
 import passport from 'passport';
 import cookieParser from 'cookie-parser';
+
+config()
 
 const app = express()
 
@@ -14,10 +17,9 @@ if (["development", "production"].includes(process.env.NODE_ENV)) {
   }
 
 app.use(express.json());
-app.use(cookieParser());
 app.use(express.urlencoded({ extended: false}));
-app.use(logger("dev"));
 
+app.use(cookieParser());
 passport.initialize();
 
 app.get("/", (_, res) => successRespond(res, 200, "Welcome to the authencation root folder"))
