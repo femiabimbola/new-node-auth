@@ -10,6 +10,6 @@ const authRouter = Router();
 
 authRouter.post('/signup', catchAsync(signup));
 authRouter.post('/login', catchAsync(login));
-authRouter.get('/amiworthy', authenticate, catchAsync(protectedRoute));
+authRouter.get('/verify', authenticate, catchAsync(protectedRoute));
 
 export default authRouter;

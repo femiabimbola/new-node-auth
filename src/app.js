@@ -5,7 +5,7 @@ import { config } from "dotenv"
 import { successRespond, errorRespond } from './helpers/responder';
 import passport from 'passport';
 import cookieParser from 'cookie-parser';
-import authRouter from './routes';
+import authRouter from './routes/auth.route';
 
 config()
 
