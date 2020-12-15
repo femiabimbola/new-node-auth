@@ -10,6 +10,7 @@ const authFields = {
   usernameField: 'email',
   passwordField: 'password',
   passReqToCallback: true,
+  // session: false
 };
 
 passport.use(

@@ -1,7 +1,7 @@
 import passport from "passport";
 import debug from "debug";
-import passportLocal from "../services/passport/passport-local";
-import { ApplicationError, NotFoundError } from "../helpers/errors";
+// import passportLocal from "../services/passport/passport-local";
+// import { ApplicationError, NotFoundError } from "../helpers/errors";
 
 const DEBUG = debug("dev");
 
@@ -45,7 +45,8 @@ export default {
           createCookieFromToken(user, 201, req, res);
         } catch (error) {
           DEBUG(error);
-          throw new ApplicationError(500, error);
+          // throw new ApplicationError(500, error);
+          throw new Error(error)
         }
       }
     )(req, res, next);

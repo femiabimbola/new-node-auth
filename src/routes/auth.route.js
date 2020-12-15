@@ -1,7 +1,7 @@
 import { Router } from "express";
 import authController from "../controllers/auth.controller";
-import catchAsync from "../middleware/catchAsync";
-import authentication from '../middleware/authenticate';
+import catchAsync from "../middlewares/catchAsync";
+import authentication from '../middlewares/authenticate';
 
 const { signup, login, protectedRoute } = authController;
 const { authenticate } = authentication;
