@@ -5,6 +5,7 @@ import { config } from "dotenv"
 import { successRespond, errorRespond } from './helpers/responder';
 import passport from 'passport';
 import cookieParser from 'cookie-parser';
+import authRouter from './routes';
 
 config()
 
@@ -21,6 +22,8 @@ app.use(express.urlencoded({ extended: false}));
 
 app.use(cookieParser());
 passport.initialize();
+
+app.use('/auth', authRouter);
 
 app.get("/", (_, res) => successRespond(res, 200, "Welcome to the authencation root folder"))
 
