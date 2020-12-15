@@ -1,0 +1,22 @@
+### The home route api 
+GET http://localhost:7000
+
+
+### To post new User
+POST http://localhost:7000/auth/signin
+Content-Type: application/json
+
+{
+    "email": "femi@mailinator.com",
+    "userName": "Tushmania",
+    "password": "helloworld"
+}
+
+###
+PUT http://localhost:7000/auth/login
+Content-Type: application/json
+
+{
+    "userName": "Tushmania",
+    "password": "helloworld"
+}
