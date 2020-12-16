@@ -1,6 +1,6 @@
 import passport from "passport";
 import debug from "debug";
-// import passportLocal from "../services/passport/passport-local";
+import passportLocal from "../services/passport/passport-local";
 // import { ApplicationError, NotFoundError } from "../helpers/errors";
 
 const DEBUG = debug("dev");
@@ -27,7 +27,7 @@ const createCookieFromToken = (user, statusCode, req, res) => {
 
 export default {
   signup: async (req, res, next) => {
-    passport.authenticate(
+    passportLocal.authenticate(
       "signup",
       { session: false },
       async (err, user, info) => {
@@ -53,7 +53,7 @@ export default {
   },
 
   login: (req, res, next) => {
-    passport.authenticate("login", { session: false }, (err, user, info) => {
+    passportLocal.authenticate("login", { session: false }, (err, user, info) => {
       if (err || !user) {
         let message = err;
         if (info) {

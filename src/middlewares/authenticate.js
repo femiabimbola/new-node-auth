@@ -1,6 +1,6 @@
 import debug from 'debug';
 import passportJWT from '../services/passport/config';
-import { ApplicationError } from '../helpers/errors';
+// import { ApplicationError } from '../helpers/errors';
 
 const DEBUG = debug('dev');
 
@@ -12,10 +12,11 @@ export default {
       }
 
       if (!user) {
-        throw new ApplicationError(
-          401,
-          'invalid token, please log in or sign up',
-        );
+        // throw new ApplicationError(
+        //   401,
+        //   'invalid token, please log in or sign up',
+        // );
+        throw new Error("User doesn't exist")
       }
       req.user = user;
       return next();
